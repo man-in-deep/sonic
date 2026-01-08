@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonic AI - World First Quantum Enhanced Artist</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Brush+Script+MT&family=Courier+New&family=Segoe+UI&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✏️</text></svg>">
+    
+    <!-- Meta tags -->
+    <meta name="description" content="Sonic AI: World's First Quantum Enhanced Creative Intelligence">
+    <meta name="keywords" content="quantum AI, creative AI, art generation, poetry, storytelling, AI artist">
+    <meta name="author" content="Sonic AI">
+    
+    <!-- Open Graph tags for social media -->
+    <meta property="og:title" content="Sonic AI - Quantum Enhanced Artist">
+    <meta property="og:description" content="Experience the future of creative AI with quantum-enhanced art, poetry, and storytelling">
+    <meta property="og:image" content="{{ url_for('static', filename='images/og-image.jpg') }}">
+    <meta property="og:url" content="{{ request.url }}">
+    
+    <!-- Theme color -->
+    <meta name="theme-color" content="#000000">
+</head>
+<body>
+    <!-- Video Background -->
+    <video id="video-background" autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Header -->
+    <header class="header glass-effect">
+        <div class="logo-container">
+            <h1 class="main-logo">SONIC AI</h1>
+            <p class="subtitle">World First Quantum Enhanced Artist</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Main Display Area (75%) -->
+        <section class="main-display glass-effect dynamic-shadow">
+            <div class="slide-container">
+                <div class="slides">
+                    <!-- Slide 1: Project Vision -->
+                    <div class="slide" data-index="0">
+                        <h2 class="slide-title">Beyond Generation to Creation</h2>
+                        <div class="slide-content">
+                            <p>Sonic AI represents a paradigm shift from <strong>output generation</strong> to <strong>creative process orchestration</strong>.</p>
+                            <p>Our quantum-enhanced algorithms don't just create art – they <strong>simulate the creative act itself</strong>, stroke by stroke, word by word, scene by scene.</p>
+                            <ul>
+                                <li>Quantum-Coherent Stroke Synthesis</li>
+                                <li>Entangled Poetry Generation</li>
+                                <li>Temporal Narrative Architecture</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Patent Portfolio -->
+                    <div class="slide" data-index="1">
+                        <h2 class="slide-title">Patent Portfolio</h2>
+                        <div class="slide-content">
+                            <p>Five Core Innovations Protected:</p>
+                            <ul>
+                                <li><strong>Quantum-Coherent Creative Generation Methodology</strong><br>Process-based AI with cross-modal quantum entanglement</li>
+                                <li><strong>Bonsai RAG++ Architecture</strong><br>Quantum-enhanced retrieval for creative systems</li>
+                                <li><strong>Physical Media Simulation through Quantum Optimization</strong><br>Stroke-based image generation with quantum physics</li>
+                                <li><strong>Temporal Narrative Entanglement System</strong><br>Parallel chapter generation with quantum consistency</li>
+                                <li><strong>Multi-Modal Quantum Creative Intelligence</strong><br>Unified system mastering visual, poetic, and narrative creation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Technical Breakthroughs -->
+                    <div class="slide" data-index="2">
+                        <h2 class="slide-title">Bonsai RAG++ Explained</h2>
+                        <div class="slide-content">
+                            <p>Traditional RAG enhanced with quantum capabilities:</p>
+                            <ul>
+                                <li><strong>Quantum-Enhanced Retrieval</strong>: Grover's algorithm for optimal creative reference selection</li>
+                                <li><strong>Cross-Modal Entanglement</strong>: Visual, textual, and structural elements share quantum states</li>
+                                <li><strong>Temporal Coherence Engine</strong>: Maintains consistency across extended creative works</li>
+                                <li><strong>Creative Evolution</strong>: System learns from its outputs through quantum feedback loops</li>
+                            </ul>
+                            <p>The Bonsai RAG++ framework enables <strong>exponential exploration</strong> of creative possibility spaces while maintaining <strong>artistic coherence</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Quantum Advantage -->
+                    <div class="slide" data-index="3">
+                        <h2 class="slide-title">Exponential Creative Space Exploration</h2>
+                        <div class="slide-content">
+                            <p>Quantum computing enables Sonic AI to explore creative territories impossible for classical systems:</p>
+                            <ul>
+                                <li><strong>10,000x faster creative exploration</strong> using quantum parallelism</li>
+                                <li><strong>Entangled thematic development</strong> across multiple creative works</li>
+                                <li><strong>Non-local inspiration</strong> connecting seemingly unrelated concepts</li>
+                                <li><strong>Quantum superposition of styles</strong> before creative collapse</li>
+                            </ul>
+                            <p>Where classical AI sees patterns, Sonic AI explores <strong>possibility spaces</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Dots -->
+                <div class="navigation-dots">
+                    <!-- Dots will be generated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Panel (25%) -->
+        <section class="action-panel glass-effect dynamic-shadow">
+            <div class="action-buttons">
+                <a href="{{ url_for('artist') }}" class="action-button quantum-hover">
+                    <i class="fas fa-paint-brush"></i> ARTIST
+                    <div class="button-description">Quantum Drawing Engine</div>
+                </a>
+                
+                <a href="{{ url_for('poet') }}" class="action-button quantum-hover">
+                    <i class="fas fa-feather-alt"></i> POET
+                    <div class="button-description">Entangled Poetry Generator</div>
+                </a>
+                
+                <a href="{{ url_for('author') }}" class="action-button quantum-hover">
+                    <i class="fas fa-book"></i> AUTHOR
+                    <div class="button-description">Temporal Narrative Architect</div>
+                </a>
+            </div>
+
+            <!-- Quantum State Visualization -->
+            <div class="quantum-state-viz">
+                <h3>Quantum Creative Coherence</h3>
+                <div class="quantum-indicator">
+                    <span class="indicator-label">ENTANGLEMENT</span>
+                    <div class="indicator-bar">
+                        <div class="indicator-fill"></div>
+                    </div>
+                    <span class="indicator-value">85%</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer glass-effect">
+        <div class="copyright">
+            &copy; 2024 Sonic AI. All rights reserved. | v{{ app_version }}
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://github.com" target="_blank" class="social-icon" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-icon" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="mailto:contact@sonic-ai.com" class="social-icon" title="Contact">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        
+        <div class="quantum-indicator">
+            <span class="indicator-label">COHERENCE</span>
+            <div class="indicator-bar">
+                <div class="indicator-fill"></div>
+            </div>
+            <span class="indicator-value">85%</span>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="{{ url_for('static', filename='js/pencil-cursor.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slides.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/quantum-effects.js') }}"></script>
+
+    <!-- Global Configuration -->
+    <script>
+        // Global configuration
+        window.SONIC_AI_CONFIG = {
+            environment: "{{ 'development' if config.DEBUG else 'production' }}",
+            version: "{{ app_version }}",
+            quantumEffects: true,
+            pencilTrail: true,
+            slideAutoRotate: true,
+            apiEndpoints: {
+                quantumState: "{{ url_for('get_quantum_state') }}",
+                trailData: "{{ url_for('save_trail_data') }}"
+            }
+        };
+
+        // Initialize when everything is loaded
+        window.addEventListener('load', function() {
+            console.log('Sonic AI v{{ app_version }} initialized');
+            console.log('Quantum Creative Platform Ready');
+            
+            // Send initial trail data
+            if (window.pencilCursor) {
+                setTimeout(() => {
+                    const trailData = {
+                        trails: window.pencilCursor.trails.length,
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    fetch(SONIC_AI_CONFIG.apiEndpoints.trailData, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(trailData)
+                    });
+                }, 5000);
+            }
+        });
+
+        // Handle page transitions
+        document.querySelectorAll('a.action-button').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                
+                // Create quantum transition effect
+                const transition = document.createElement('div');
+                transition.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: black;
+                    z-index: 99999;
+                    opacity: 0;
+                    animation: fadeIn 0.3s ease-out forwards;
+                `;
+                document.body.appendChild(transition);
+                
+                // Navigate after animation
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 300);
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Toggle effects with 'Q'
+            if (e.key === 'q' || e.key === 'Q') {
+                if (window.quantumEffects) {
+                    const enabled = window.quantumEffects.toggleEffects();
+                    console.log(`Quantum effects ${enabled ? 'enabled' : 'disabled'}`);
+                }
+            }
+            
+            // Toggle auto-rotate with 'A'
+            if (e.key === 'a' || e.key === 'A') {
+                if (window.slideCarousel) {
+                    window.slideCarousel.toggleAutoRotation();
+                    console.log(`Auto-rotation toggled`);
+                }
+            }
+            
+            // Toggle pencil trail with 'P'
+            if (e.key === 'p' || e.key === 'P') {
+                if (window.pencilCursor) {
+                    window.pencilCursor.quantumTunnelingProbability = 
+                        window.pencilCursor.quantumTunnelingProbability > 0 ? 0 : 0.01;
+                    console.log(`Pencil trail ${window.pencilCursor.quantumTunnelingProbability > 0 ? 'enabled' : 'disabled'}`);
+                }
+            }
+        });
+    </script>
+
+    <!-- Custom CSS for button descriptions -->
+    <style>
+        .button-description {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 5px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+        }
+        
+        .action-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .action-button i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .quantum-state-viz {
+            margin-top: 40px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .quantum-state-viz h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</body>
+</html>

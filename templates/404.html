@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Sonic AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #000;
+            color: #FFD700;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid #FFD700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 8rem;
+            margin-bottom: 20px;
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .quantum-text {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid #FFD700;
+        }
+        
+        .back-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #000;
+            color: #FFD700;
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .back-button:hover {
+            background: #FFD700;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .quantum-particle {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            border-radius: 50%;
+            margin: 0 5px;
+            animation: float 3s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <div class="quantum-text">
+            <p><strong>Quantum State Not Found</strong></p>
+            <p>The creative dimension you're looking for has undergone quantum decoherence.</p>
+            <p>Perhaps it tunneled to another timeline?</p>
+        </div>
+        
+        <div style="margin: 30px 0;">
+            <span class="quantum-particle" style="animation-delay: 0s"></span>
+            <span class="quantum-particle" style="animation-delay: 0.2s"></span>
+            <span class="quantum-particle" style="animation-delay: 0.4s"></span>
+            <span class="quantum-particle" style="animation-delay: 0.6s"></span>
+            <span class="quantum-particle" style="animation-delay: 0.8s"></span>
+        </div>
+        
+        <a href="{{ url_for('index') }}" class="back-button">
+            ← Return to Sonic AI
+        </a>
+    </div>
+</body>
+</html>

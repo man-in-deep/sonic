@@ -1,0 +1,6 @@
+Flask
+python-dotenv
+Werkzeug
+Pillow
+numpy==2.4.0
+opencv-python-headless

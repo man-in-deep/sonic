@@ -1,0 +1,611 @@
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background: #000000; /* Pure black background */
+    color: #FFD700; /* Yellow text */
+}
+
+/* Hide default cursor */
+body {
+    cursor: none !important;
+}
+
+/* ===== VIDEO BACKGROUND ===== */
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    opacity: 0.7;
+    filter: brightness(0.3) contrast(1.2);
+}
+
+/* ===== QUANTUM NOISE FIELD ===== */
+#quantum-noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 40% 70%, rgba(255, 215, 0, 0.02) 1px, transparent 1px),
+        radial-gradient(circle at 60% 20%, rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 80% 50%, rgba(255, 215, 0, 0.02) 1px, transparent 1px);
+    background-size: 300px 300px, 400px 400px, 500px 500px, 600px 600px;
+    z-index: -1;
+    animation: quantum-drift 20s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes quantum-drift {
+    0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+    100% { background-position: 300px 300px, 400px 400px, 500px 500px, 600px 600px; }
+}
+
+/* ===== HEADER STYLES ===== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.85); /* Black with transparency */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.main-logo {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #FFD700;
+    text-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.5),
+        0 0 20px rgba(255, 215, 0, 0.3),
+        0 0 30px rgba(255, 215, 0, 0.2);
+    letter-spacing: 2px;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    padding: 10px 0;
+}
+
+.main-logo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+    animation: logo-glow 3s ease-in-out infinite;
+}
+
+.subtitle {
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    color: #FFD700;
+    opacity: 0.9;
+    letter-spacing: 1px;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding-left: 10px;
+}
+
+/* ===== MAIN LAYOUT ===== */
+.main-container {
+    display: flex;
+    min-height: 100vh;
+    padding-top: 120px; /* Account for fixed header */
+}
+
+/* Main Display Area (75%) */
+.main-display {
+    flex: 3;
+    padding: 40px;
+    position: relative;
+    background: rgba(0, 0, 0, 0.85); /* Black with transparency */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-right: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Action Panel (25%) */
+.action-panel {
+    flex: 1;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background: rgba(0, 0, 0, 0.9); /* Black with transparency */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+/* ===== SLIDE CAROUSEL ===== */
+.slide-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 
+        inset 0 0 20px rgba(255, 215, 0, 0.1),
+        0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.slides {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-title {
+    font-size: 2.5rem;
+    color: #FFD700;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.slide-content {
+    font-size: 1.2rem;
+    color: #FFD700;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 800px;
+    opacity: 0.9;
+}
+
+.slide-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.slide-content li {
+    margin: 10px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.slide-content li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+    opacity: 0.7;
+}
+
+/* Navigation Dots */
+.navigation-dots {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.3);
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dot::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+    animation: dot-glow 2s linear infinite;
+}
+
+.dot.active {
+    background: #FFD700;
+    transform: scale(1.3);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.dot.active::before {
+    animation: none;
+    background: #FFD700;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.action-button {
+    padding: 20px 30px;
+    background: rgba(0, 0, 0, 0.85); /* Black with transparency */
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    border-radius: 10px;
+    color: #FFD700;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 
+        0 0 20px rgba(0, 0, 0, 0.5),
+        inset 0 0 10px rgba(255, 215, 0, 0.1);
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.action-button:hover {
+    background: rgba(0, 0, 0, 0.95);
+    border-color: #FFD700;
+    transform: translateY(-5px);
+    box-shadow: 
+        0 10px 30px rgba(255, 215, 0, 0.3),
+        inset 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.action-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.action-button:active {
+    transform: translateY(-2px);
+}
+
+/* Quantum superposition effect on hover */
+.action-button.quantum-hover::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        transparent 20%, 
+        rgba(255, 215, 0, 0.3) 50%, 
+        transparent 80%);
+    z-index: -1;
+    border-radius: 12px;
+    animation: quantum-border 1.5s linear infinite;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 40px;
+    background: rgba(0, 0, 0, 0.85); /* Black with transparency */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.copyright {
+    color: #FFD700;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-family: 'Courier New', monospace;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFD700;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon:hover {
+    background: rgba(255, 215, 0, 0.1);
+    border-color: #FFD700;
+    transform: translateY(-3px) rotate(5deg);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.social-icon i {
+    position: relative;
+    z-index: 1;
+}
+
+/* Quantum Entanglement Indicator */
+.quantum-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 15px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.indicator-label {
+    color: #FFD700;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    font-family: 'Courier New', monospace;
+}
+
+.indicator-bar {
+    width: 100px;
+    height: 6px;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.indicator-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    border-radius: 3px;
+    width: 75%;
+    position: relative;
+    animation: coherence-pulse 2s ease-in-out infinite;
+}
+
+.indicator-value {
+    color: #FFD700;
+    font-size: 0.8rem;
+    font-weight: 700;
+    min-width: 40px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+/* ===== CUSTOM CURSOR ===== */
+#custom-cursor {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+}
+
+#custom-cursor.pencil {
+    background: url('/static/images/pencil.png') no-repeat center;
+    background-size: contain;
+}
+
+#custom-cursor.eraser {
+    background: url('/static/images/eraser.png') no-repeat center;
+    background-size: contain;
+    transform: rotate(45deg);
+}
+
+/* ===== PENCIL TRAILS ===== */
+.pencil-trail {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    background: #FFD700;
+    border-radius: 50%;
+    opacity: 0;
+    animation: trail-fade 0.5s ease-out forwards;
+}
+
+/* ===== QUANTUM TUNNELING EFFECT ===== */
+.quantum-tunnel {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9997;
+    background: radial-gradient(circle, rgba(255,215,0,0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: tunnel-pop 0.3s ease-out forwards;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes logo-glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+@keyframes dot-glow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+}
+
+@keyframes quantum-border {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes coherence-pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+@keyframes trail-fade {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+@keyframes tunnel-pop {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .main-display, .action-panel {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    }
+    
+    .action-panel {
+        padding: 20px;
+    }
+    
+    .action-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: none;
+    }
+    
+    .action-button {
+        flex: 1;
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+    }
+    
+    .main-logo {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .main-container {
+        padding-top: 100px;
+    }
+    
+    .slide-container {
+        height: 300px;
+    }
+    
+    .slide-title {
+        font-size: 2rem;
+    }
+    
+    .slide-content {
+        font-size: 1rem;
+    }
+    
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 20px;
+    }
+    
+    .quantum-indicator {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+    }
+}
