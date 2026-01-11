@@ -4,13 +4,9 @@ Werkzeug
 Pillow
 numpy==2.4.0
 opencv-python-headless
-requests
 huggingface-hub
-replicate
 Pillow
 numpy==2.4.0
-python-dotenv
-mysql-connector-python
-Flask-SQLAlchemy
-Flask-WTF
-WTForms
+scikit-image
+pymysql
+cryptography

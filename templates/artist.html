@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artist Module - Sonic AI</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Brush+Script+MT&family=Segoe+UI&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/artist.css') }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+    
     <style>
+        /* Keep existing styles (DON'T CHANGE) */
         * {
             margin: 0;
             padding: 0;
@@ -86,19 +100,186 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="quantum-pulse">🎨 ARTIST MODULE</h1>
-        <p class="subtitle">Quantum Drawing Engine</p>
-        
-        <div class="message">
-            <p><strong>Phase 2 - Coming Soon</strong></p>
-            <p>Quantum-Coherent Stroke Synthesis (Q-CSS)</p>
-            <p>Stroke-based drawing with physical media simulation</p>
-        </div>
-        
-        <a href="{{ url_for('index') }}" class="back-button">
-            ← Return to Sonic AI
+    <!-- Artist Header -->
+    <header class="artist-header">
+        <a href="{{ url_for('index') }}" class="artist-logo">
+            <i class="fas fa-paint-brush"></i> Sonic AI Artist
         </a>
+        <a href="{{ url_for('index') }}" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Portal
+        </a>
+    </header>
+
+    <!-- Main Artist Container -->
+    <div class="artist-container">
+        <!-- Input Panel -->
+        <div class="input-panel">
+            <div class="input-group">
+                <label for="prompt">
+                    <i class="fas fa-pencil-alt"></i> Describe your artwork
+                </label>
+                <textarea 
+                    id="prompt" 
+                    class="prompt-textarea" 
+                    placeholder="Describe your artwork in detail... e.g., 'A majestic dragon flying over ancient mountains at sunset'"
+                    rows="5"
+                ></textarea>
+            </div>
+
+            <div class="input-group">
+                <label for="uploadArea">
+                    <i class="fas fa-image"></i> Reference Image (Optional)
+                </label>
+                <div id="uploadArea" class="upload-area">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <div class="upload-text">
+                        Drag & drop or click to upload
+                    </div>
+                    <div class="upload-hint">
+                        Optional reference image (JPG, PNG, GIF)
+                    </div>
+                    <img id="imagePreview" alt="Preview">
+                </div>
+                <input type="file" id="referenceImage" accept="image/*" style="display: none;">
+            </div>
+
+            <div class="input-group">
+                <label for="artType">
+                    <i class="fas fa-palette"></i> Art Type
+                </label>
+                <select id="artType" class="styled-select">
+                    {% for art_type in art_types %}
+                    <option value="{{ art_type }}">{{ art_type }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="mediumStyle">
+                    <i class="fas fa-brush"></i> Medium/Style
+                </label>
+                <select id="mediumStyle" class="styled-select">
+                    {% for medium in medium_styles %}
+                    <option value="{{ medium }}">{{ medium }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Quantum Generation Progress</span>
+                    <span class="progress-text">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- Status Message -->
+            <div id="statusMessage" class="status-message"></div>
+
+            <!-- Action Buttons -->
+            <div class="button-group">
+                <button id="generateBtn" class="action-button generate-btn">
+                    <i class="fas fa-magic"></i>
+                    <span>Generate Art</span>
+                </button>
+                <button id="clearBtn" class="action-button clear-btn">
+                    <i class="fas fa-trash"></i>
+                    <span>Clear All</span>
+                </button>
+            </div>
+
+            <!-- Quantum State Display -->
+            <div class="quantum-state-display">
+                <div class="quantum-state-title">
+                    <i class="fas fa-atom"></i> Quantum Creative State
+                </div>
+                <div class="quantum-state-values">
+                    <span>Coherence: 0.85</span>
+                    <span>Entanglement: 0.72</span>
+                    <span>Strokes: 0</span>
+                </div>
+            </div>
+
+            <!-- History Panel -->
+            <div class="history-panel">
+                <div class="history-title">
+                    <i class="fas fa-history"></i> Recent Artworks
+                </div>
+                <div class="history-grid">
+                    <!-- History items will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Canvas Panel -->
+        <div class="canvas-panel">
+            <div class="canvas-container">
+                <canvas id="drawingCanvas"></canvas>
+                <canvas id="strokeCanvas"></canvas>
+                <div class="quantum-effects"></div>
+            </div>
+
+            <div class="download-section">
+                <button id="downloadBtn" class="download-btn" disabled>
+                    <i class="fas fa-download"></i>
+                    <span>Download Artwork</span>
+                </button>
+            </div>
+
+            <!-- Original container for backward compatibility -->
+            <div class="container" style="display: none;">
+                <h1 class="quantum-pulse">🎨 ARTIST MODULE</h1>
+                <p class="subtitle">Quantum Drawing Engine</p>
+                
+                <div class="message">
+                    <p><strong>Phase 2 - Active</strong></p>
+                    <p>Quantum-Coherent Stroke Synthesis (Q-CSS)</p>
+                    <p>Stroke-based drawing with physical media simulation</p>
+                </div>
+                
+                <a href="{{ url_for('index') }}" class="back-button">
+                    ← Return to Sonic AI
+                </a>
+            </div>
+        </div>
     </div>
+
+    <!-- JavaScript Files -->
+    <script src="{{ url_for('static', filename='js/artist.js') }}"></script>
+    
+    <!-- Global Configuration -->
+    <script>
+        // Disable original container
+        document.addEventListener('DOMContentLoaded', () => {
+            const originalContainer = document.querySelector('.container');
+            if (originalContainer && originalContainer.style) {
+                originalContainer.style.display = 'none';
+            }
+        });
+
+        // Handle file upload preview
+        document.getElementById('referenceImage').addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        // Initialize tooltips
+        document.querySelectorAll('[title]').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                // Add tooltip implementation if needed
+            });
+        });
+    </script>
 </body>
 </html>
